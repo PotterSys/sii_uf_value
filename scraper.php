@@ -11,7 +11,7 @@ $html = scraperwiki::scrape("http://www.sii.cl/pagina/valores/uf/uf2014.htm");
 // // Find something on the page using css selectors
 $dom = new simple_html_dom();
 $dom->load($html);
-print_r($dom->find("#contenido table tr:nth-child(30) td:nth-child(10)"));
+print_r($dom->find("#contenido table tbody")->children(30)->children(10));
 //
 // // Write out to the sqlite database using scraperwiki library
 // scraperwiki::save_sqlite(array('name'), array('name' => 'susan', 'occupation' => 'software developer'));
