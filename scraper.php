@@ -1,17 +1,17 @@
-<?
+<?php
 // This is a template for a PHP scraper on Morph (https://morph.io)
 // including some code snippets below that you should find helpful
 
-// require 'scraperwiki.php';
-// require 'scraperwiki/simple_html_dom.php';
+require 'scraperwiki.php';
+require 'scraperwiki/simple_html_dom.php';
 //
 // // Read in a page
-// $html = scraperwiki::scrape("http://foo.com");
+$html = scraperwiki::scrape("http://www.sii.cl/pagina/valores/uf/uf2014.htm");
 //
 // // Find something on the page using css selectors
-// $dom = new simple_html_dom();
-// $dom->load($html);
-// print_r($dom->find("table.list"));
+$dom = new simple_html_dom();
+$dom->load($html);
+print_r($dom->find("#contenido table tr:nth-child(30) td:nth-child(10)"));
 //
 // // Write out to the sqlite database using scraperwiki library
 // scraperwiki::save_sqlite(array('name'), array('name' => 'susan', 'occupation' => 'software developer'));
