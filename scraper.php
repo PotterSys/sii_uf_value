@@ -6,7 +6,18 @@ date_default_timezone_set('America/Santiago');
 
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
-//
+
+$mes = 1;
+$dia = 1;
+$valor = array();
+
+// Init
+for( $mes = 1; $mes <= 12; $mes++ ){
+    for( $dia = 1; $dia <= 31; $dia++){
+        $valor[$mes][$dia] = null;
+    }
+}
+
 // // Read in a page
 $html = scraperwiki::scrape("http://www.sii.cl/pagina/valores/uf/uf2014.htm");
 //
@@ -14,7 +25,22 @@ $html = scraperwiki::scrape("http://www.sii.cl/pagina/valores/uf/uf2014.htm");
 $dom = new simple_html_dom();
 $dom->load($html);
 
-print_r( $dom->find("#contenido table tbody") );
+$mes = 1;
+$dia = 1;
+
+foreach( $dom->find('#contenido table tbody tr') as $fila ){
+    
+    for( $mes = 0; $mes <= 12; $mes++ ){
+        if( 'td' == $fila->children($mes)->tag ){
+            $val = str_replace('&nbsp;', '', $fila->children($mes)->plaintext );
+            $valor[ $mes ][ $dia ] = trim( $val );
+        }
+    }
+    
+    $dia++; 
+}
+
+var_dump( $valor );
 //
 // // Write out to the sqlite database using scraperwiki library
 // scraperwiki::save_sqlite(array('name'), array('name' => 'susan', 'occupation' => 'software developer'));
