@@ -2,6 +2,8 @@
 // This is a template for a PHP scraper on Morph (https://morph.io)
 // including some code snippets below that you should find helpful
 
+date_default_timezone_set('America/Santiago');
+
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 //
@@ -11,7 +13,8 @@ $html = scraperwiki::scrape("http://www.sii.cl/pagina/valores/uf/uf2014.htm");
 // // Find something on the page using css selectors
 $dom = new simple_html_dom();
 $dom->load($html);
-print_r($dom->find("#contenido table tbody")->children(30)->children(10));
+
+print_r( $dom->find("#contenido table tbody") );
 //
 // // Write out to the sqlite database using scraperwiki library
 // scraperwiki::save_sqlite(array('name'), array('name' => 'susan', 'occupation' => 'software developer'));
