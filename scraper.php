@@ -52,8 +52,7 @@ for( $year = 2014; $year <= 2014; $year++):
                 $llave = sprintf('%s-%s-%s', $year, $m, $d);
                 
                 scraperwiki::save_sqlite( array('fecha'),
-                                          array('fecha' => $llave, 'year' => $year, 'month' => $m, 'day' => $d, 'value' => $v ),
-                                         'valores_uf');
+                                          array('fecha' => $llave, 'year' => $year, 'month' => $m, 'day' => $d, 'value' => $v ) );
                 
                 printf(" %s => %s <br>", $llave, $v);
             }
