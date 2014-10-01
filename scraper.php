@@ -50,14 +50,16 @@ for( $year = 2010; $year <= 2014; $year++):
                 $d = $d-1;
                 
                 $llave = sprintf('%s-%s-%s', $year, $m, $d);
+                $valor = str_replace(array('.', ','), array('', '.'), $v);
+                $valor = floatval( $valor );
                 
                 scraperwiki::save_sqlite( array('fecha'),
-                                          array('fecha' => $llave, 'year' => $year, 'month' => $m, 'day' => $d, 'value' => $v ) );
+                                          array('fecha' => $llave, 'year' => $year, 'month' => $m, 'day' => $d, 'value' => $valor ) );
                 
-                printf(" %s => %s <br>", $llave, $v);
+                printf("%s => %s \n", $llave, $valor);
             }
         }
-        echo '<hr>';
+        echo "\n ## ## ## ## ## ##\n";
     }
     
 endfor;
