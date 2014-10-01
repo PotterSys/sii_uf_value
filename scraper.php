@@ -9,7 +9,7 @@ require 'simple_html_dom.php';
 
 $year = 1994;
 
-for( $year = 2014; $year <= 2014; $year++):
+for( $year = 2010; $year <= 2014; $year++):
     $html = scraperwiki::scrape("http://www.sii.cl/pagina/valores/uf/uf". $year .".htm");
     
     $dom = new simple_html_dom();
