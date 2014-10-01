@@ -53,8 +53,8 @@ for( $year = 2010; $year <= 2014; $year++):
                 $valor = str_replace(array('.', ','), array('', '.'), $v);
                 $valor = floatval( $valor );
                 
-                scraperwiki::save_sqlite( array('fecha'),
-                                          array('fecha' => $llave, 'year' => $year, 'month' => $m, 'day' => $d, 'value' => $valor ) );
+                scraperwiki::save_sqlite( array('date'),
+                                          array('date' => $llave, 'year' => $year, 'month' => $m, 'day' => $d, 'value' => $valor ) );
                 
                 printf("%s => %s \n", $llave, $valor);
             }
